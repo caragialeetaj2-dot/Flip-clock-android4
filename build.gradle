@@ -1,0 +1,5 @@
+// Top-level build file for "Offline Flip Clock".
+// Plain Java + Android framework only: no AndroidX, no Kotlin, no Material Components.
+plugins {
+    id 'com.android.application' version '8.7.3' apply false
+}

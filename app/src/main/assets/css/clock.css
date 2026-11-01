@@ -1,0 +1,159 @@
+/*
+ * Offline Flip Clock - Android 4.0 WebView compatible CSS.
+ * Design reference: 1280 x 720 landscape.
+ * The stage font-size is set by JavaScript to (100 * scale) px, so 1em = 100 design px.
+ * No Grid, no custom properties, no aspect-ratio, no backdrop-filter, no animations.
+ */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    color: #ececec;
+    font-family: "Roboto Condensed", "Roboto", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-size-adjust: none;
+    cursor: default;
+}
+
+/* 12.80em x 7.20em design surface, positioned and sized by clock.js */
+.stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 12.8em;
+    height: 7.2em;
+    font-size: 100px;
+    overflow: hidden;
+}
+
+/* ---------- Date (upper-right corner of the real screen) ---------- */
+/* .corner gets the same scaled font-size as .stage, set by clock.js */
+.corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6em;
+    height: 1em;
+    font-size: 100px;
+}
+
+.date-box {
+    position: absolute;
+    top: 0.36em;
+    right: 0.5em;
+    height: 0.5em;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.date-text {
+    font-size: 0.34em;           /* 34 design px */
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: #b8b8b8;
+    line-height: 1;
+}
+
+/* ---------- Flip cards ---------- */
+.card {
+    position: absolute;
+    top: 1.6em;                  /* 160 design px */
+    width: 4.4em;                /* 440 design px */
+    height: 4.4em;               /* 440 design px */
+}
+
+.card-hours   { left: 1.4em; }   /* 140 px  */
+.card-minutes { left: 7.0em; }   /* 700 px  */
+
+.half {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 50%;
+}
+
+.half-top {
+    top: 0;
+    background: #1e1e1e;
+    background-image: -webkit-linear-gradient(top, #262626, #1b1b1b);
+    background-image: linear-gradient(to bottom, #262626, #1b1b1b);
+    -webkit-border-top-left-radius: 0.16em;
+    -webkit-border-top-right-radius: 0.16em;
+    border-top-left-radius: 0.16em;
+    border-top-right-radius: 0.16em;
+}
+
+.half-bottom {
+    bottom: 0;
+    background: #161616;
+    background-image: -webkit-linear-gradient(top, #1a1a1a, #121212);
+    background-image: linear-gradient(to bottom, #1a1a1a, #121212);
+    -webkit-border-bottom-left-radius: 0.16em;
+    -webkit-border-bottom-right-radius: 0.16em;
+    border-bottom-left-radius: 0.16em;
+    border-bottom-right-radius: 0.16em;
+}
+
+.digits {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 3.4em;            /* 340 design px */
+    line-height: 1.2941;         /* 440 / 340 -> fills the card height */
+    font-weight: 700;
+    text-align: center;
+    color: #f2f2f2;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+/* Horizontal fold line through the middle of each card */
+.fold {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 0.05em;
+    margin-top: -0.025em;
+    background: #000;
+    border-bottom: 1px solid #2c2c2c;
+}
+
+/* Small hinge pins at both ends of the fold */
+.pin {
+    position: absolute;
+    top: 50%;
+    width: 0.07em;
+    height: 0.26em;
+    margin-top: -0.13em;
+    background: #0a0a0a;
+    border: 1px solid #2a2a2a;
+    -webkit-border-radius: 0.03em;
+    border-radius: 0.03em;
+}
+.pin-left  { left: -0.04em; }
+.pin-right { right: -0.04em; }
+
+/* ---------- Illuminated separator dots ---------- */
+.dot {
+    position: absolute;
+    left: 6.29em;                /* centred on x = 640 (22px dot) */
+    width: 0.22em;
+    height: 0.22em;
+    background: #e6e6e6;
+    -webkit-border-radius: 0.11em;
+    border-radius: 0.11em;
+    -webkit-box-shadow: 0 0 0.14em rgba(255, 255, 255, 0.55);
+    box-shadow: 0 0 0.14em rgba(255, 255, 255, 0.55);
+}
+.dot-top    { top: 3.08em; }     /* card centre y = 380 */
+.dot-bottom { top: 4.30em; }

@@ -1,0 +1,40 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.offline.flipclock'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.offline.flipclock"
+        // Android 4.0 (Ice Cream Sandwich) and newer.
+        minSdk 14
+        // A modern targetSdk is required so the APK can also be installed on Android 14+.
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        // minSdk 14 deliberately triggers "old SDK" lint warnings; they must not block the build.
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+    // Intentionally empty: no AndroidX, no analytics, no ads, no telemetry, no crash reporting.
+}
